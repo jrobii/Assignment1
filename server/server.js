@@ -9,7 +9,8 @@ const path = require('path');
 
 const PORT=3000;
 
-require('./routes/authroute.js')(app, path)
+require('./routes/authroute.js')(app, path);
+require('./routes/newuserroute.js')(app, path);
 
 app.use(cors());
 
