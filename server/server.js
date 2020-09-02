@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const cors = require('cors');
+var cors = require('cors');
 const http = require('http').Server(app);
 const server = require('./listen.js');
 const bodyParser = require('body-parser');
@@ -12,6 +12,7 @@ const PORT=3000;
 require('./routes/authroute.js')(app, path)
 
 app.use(cors());
+
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname + '/../dist/assignment')));
