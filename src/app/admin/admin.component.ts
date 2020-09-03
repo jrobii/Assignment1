@@ -25,7 +25,11 @@ export class AdminComponent implements OnInit {
 
   addNewUser() {
     this.userservice.createNewUser(this.username, this.email, this.password, this.role).subscribe((data: any)=> {
-      alert("Successfully added user: " + data.username)
+      if (!data.ok) {
+        alert("Error, a user with this username already exists!");
+      } else {
+        alert("Successfully created user: " + data.username)
+      }
     });
   }
 }
