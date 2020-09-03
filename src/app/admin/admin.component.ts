@@ -18,6 +18,7 @@ export class AdminComponent implements OnInit {
   role:string;
   email:string;
   users:[] = [];
+  id:number;
 
 
   ngOnInit(): void {
@@ -31,13 +32,20 @@ export class AdminComponent implements OnInit {
         alert("Error, a user with this username already exists!");
       } else {
         alert("Successfully created user: " + data.username)
+        this.router.navigateByUrl("/admin");
       }
+      
     });
+  }
+
+  addNewGroup() {
+    
   }
 
   deleteUser(id:number) {
     this.userservice.deleteUser(id).subscribe((data: any) => {
-
+      alert("User with id: " + data.id + ", and username: " + data.username + " has been deleted.")
+      this.router.navigateByUrl("/admin");
     });
   }
 

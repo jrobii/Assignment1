@@ -14,14 +14,14 @@ module.exports = function (app) {
             accounts = JSON.parse(data)
 
             let a = accounts.find(user => ((user.id == req.body.id)));
-            let use = _.findWhere(accounts, {id: req.body.id})
-            let index = _.indexOf(accounts, use);
+            let index = accounts.findIndex(user => ((user.id == req.body.id)));
             accounts.splice(index, 1)
             accountsJSON = JSON.stringify(accounts)
             fs.writeFile('./data/users.json', accountsJSON, 'utf-8', function(err) {
                 if (err) throw err;
                 
             });
+            console.log(a);
             res.send(a);
         });
     });
