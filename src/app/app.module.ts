@@ -10,13 +10,15 @@ import { CommonModule } from '@angular/common';
 import { LoginService } from '../app/services/login.service';
 import { UserService } from  '../app/services/user.service';
 import { GroupService } from  '../app/services/group.service';
-import { AdminComponent } from './admin/admin.component'
+import { AdminComponent } from './admin/admin.component';
+import { ChatComponent } from './chat/chat.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

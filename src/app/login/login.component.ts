@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
       if (data.ok) {
         this.user = new User(data.id, data.username, data.email, data.role)
         localStorage.setItem('current', JSON.stringify(this.user));
+        this.router.navigateByUrl('/chat');
       }  else {
         alert("Invalid Credentials!");
       }
