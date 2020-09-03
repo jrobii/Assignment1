@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../app/services/login.service';
 import { UserService } from  '../app/services/user.service';
+import { GroupService } from  '../app/services/group.service';
 import { AdminComponent } from './admin/admin.component'
 
 @NgModule({
@@ -24,7 +25,7 @@ import { AdminComponent } from './admin/admin.component'
     HttpClientModule,
     CommonModule
   ],
-  providers: [LoginService, UserService],
+  providers: [LoginService, UserService, GroupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

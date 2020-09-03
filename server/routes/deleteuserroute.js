@@ -1,6 +1,5 @@
 const bodyParser = require("body-parser");
 const cors = require('cors');
-var authroute = require('./authroute');
 const fs = require("fs");
 
 module.exports = function (app) {
