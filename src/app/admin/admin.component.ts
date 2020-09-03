@@ -19,13 +19,16 @@ export class AdminComponent implements OnInit {
   role:string;
   email:string;
   users:[] = [];
+  groups:[] = [];
   id:number;
+  groupid:number;
   groupName:string;
 
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('current'));
     this.getUsers();
+    this.getGroups();
   }
 
   addNewUser() {
@@ -41,13 +44,30 @@ export class AdminComponent implements OnInit {
   }
 
   addNewGroup() {
-    this.groupservice.addNewGroup(this.groupName).subscribe((data: any)=> {
-      if (!data.ok) {
-        alert("Error, a group with this username already exists!");
-      } else {
-        alert("Successfully created user: " + data.name)
-        this.router.navigateByUrl("/admin");
-      }
+    if (this.groupName == undefined) {
+      alert("Error! Name of group cannot be empty.")
+    } else {
+      this.groupservice.addNewGroup(this.groupName).subscribe((data: any)=> {
+        if (!data.ok) {
+          alert("Error, a group with this username already exists!");
+        } else {
+          alert("Successfully created group: " + data.name)
+          this.router.navigateByUrl("/admin");
+        }
+      });
+    } 
+  }
+
+  getGroups() {
+    this.groupservice.getGroups().subscribe((data: any) => {
+      this.groups = data;
+    })
+  }
+
+  deleteGroup(id:number) {
+    this.groupservice.deleteGroup(id).subscribe((data: any) => {
+      alert("Group with id: " + data.id + ", and name: " + data.name + " has been deleted.")
+      this.router.navigateByUrl("/admin");
     });
   }
 
@@ -60,7 +80,7 @@ export class AdminComponent implements OnInit {
 
   getUsers() {
     this.userservice.getUsers().subscribe((data: any) => {
-      this.users = data
+      this.users = data;
     })
   }
 }
