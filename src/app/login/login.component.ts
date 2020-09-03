@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn() {
     this.loginService.login(this.username, this.password).subscribe((data: any) => {
       if (data.ok) {
-        this.user = new User(data.username, data.email, data.role)
+        this.user = new User(data.id, data.username, data.email, data.role)
         localStorage.setItem('current', JSON.stringify(this.user));
       }  else {
         alert("Invalid Credentials!");

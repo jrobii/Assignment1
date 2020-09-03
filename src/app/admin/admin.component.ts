@@ -17,10 +17,12 @@ export class AdminComponent implements OnInit {
   password:string;
   role:string;
   email:string;
+  users:[] = [];
 
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('current'));
+    this.getUsers();
   }
 
   addNewUser() {
@@ -31,5 +33,17 @@ export class AdminComponent implements OnInit {
         alert("Successfully created user: " + data.username)
       }
     });
+  }
+
+  deleteUser(id:number) {
+    this.userservice.deleteUser(id).subscribe((data: any) => {
+
+    });
+  }
+
+  getUsers() {
+    this.userservice.getUsers().subscribe((data: any) => {
+      this.users = data
+    })
   }
 }

@@ -6,7 +6,7 @@ const fs = require("fs");
 module.exports = function (app) {
     app.use(bodyParser.json());
     app.use(cors());
-    app.post('/api/create', function(req, res){
+    app.post('/api/createuser', function(req, res){
         console.log(req.body)
         let newUser = {
             "id": "",

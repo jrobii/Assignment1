@@ -11,6 +11,8 @@ const PORT=3000;
 
 require('./routes/authroute.js')(app, path);
 require('./routes/newuserroute.js')(app, path);
+require('./routes/deleteuserroute.js')(app, path);
+require('./routes/getusersroute.js')(app, path);
 
 app.use(cors());
 

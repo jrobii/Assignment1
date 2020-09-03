@@ -18,7 +18,6 @@ module.exports = function (app) {
                 a.ok = true
                 a.password = "";
                 res.send(a);
-                console.log("I am found"+ a.email)
             } else {
                 res.send({"ok": false});
             }

@@ -1,4 +1,3 @@
-
 <body>
     <div id="login" *ngIf="user.role == 's-admin'">
         <h3 class="text-center text-white pt-5">Login form</h3>
@@ -33,4 +32,21 @@
             </div>
         </div>
     </div>
+    <h3 class="text-center text-white pt-5">Current Users</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                    <h3 class="text-center text-info">Current Users.</h3>
+                        <ul class="list-group" *ngFor="let user of users">
+                                <li class="list-group-item">ID: {{user.id}}</li>
+                                <li class="list-group-item">Username: {{user.username}}</li>
+                                <li class="list-group-item">Email: {{user.email}}</li>
+                                <li class="list-group-item">Role: {{user.role}}</li>
+                                <p></p>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
