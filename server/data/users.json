@@ -1,16 +1,1 @@
-[
-    {
-        "id": 1, 
-        "username": "super", 
-        "email": "admin@admin.com", 
-        "password": "admin", 
-        "role": "s-admin"
-    },
-    {
-        "id": 2, 
-        "username": "bob", 
-        "email": "bob@bob.com", 
-        "password": "bob", 
-        "role": "user"
-    }
-]
+[{"id":1,"username":"super","email":"admin@admin.com","password":"admin","role":"s-admin"},{"id":2,"username":"bob","email":"bob@bob.com","password":"bob","role":"user"},{"id":3,"username":"jye","email":"jye@jrobi.co","password":"123"}]

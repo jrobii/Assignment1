@@ -12,7 +12,6 @@ module.exports = function (app) {
         fs.readFile('./data/users.json', 'utf8', function(err, data) {
             if (err) throw err;
             accounts = JSON.parse(data)
-        
 
             let a = accounts.find(use => ((use.username == username) && (use.password == password)));
             if (a) {

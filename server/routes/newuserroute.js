@@ -11,14 +11,27 @@ module.exports = function (app) {
         password = req.body.password
         role = req.body.role
 
-        
-        /*let i = accounts.find(use => ((use.username == username) && (use.password == password)));
-        if (i) {
-            i.ok = true
-            i.password = "";
-            res.send(i);
-        } else {
-            res.send({"ok": false});
-        }*/
+        let newUser = {
+            "id": "",
+            "username": req.body.username,
+            "email": req.body.email,
+            "password": req.body.password,
+            "role": req.body.role,
+        }
+
+        fs.readFile('./data/users.json', 'utf8', function(err, data) {
+            if (err) throw err;
+            accounts = JSON.parse(data)
+            newUser.id = accounts[accounts.length -1].id + 1;
+            accounts.push(newUser)
+
+            accountsJSON = JSON.stringify(accounts);
+
+            fs.writeFile('./data/users.json', accountsJSON, 'utf-8', function(err) {
+                if (err) throw err;
+                
+            });
+            res.send(newUser);
+        });
     });
 }
