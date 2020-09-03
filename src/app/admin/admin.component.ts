@@ -83,4 +83,10 @@ export class AdminComponent implements OnInit {
       this.users = data;
     })
   }
+
+  addUserToGroup() {
+    this.groupservice.addUserToGroup(this.groupName, this.username).subscribe((data:any) => {
+
+    });
+  }
 }

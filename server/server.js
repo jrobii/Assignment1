@@ -19,6 +19,9 @@ require('./routes/getusersroute.js')(app, path);
 require('./routes/newgrouproute.js')(app, path);
 require('./routes/deletegrouproute.js')(app, path);
 require('./routes/getgroupsroute.js')(app, path);
+require('./routes/addusertogrouproute.js')(app, path);
+
+//CHANNEL ROUTES
 
 app.use(cors());
 
