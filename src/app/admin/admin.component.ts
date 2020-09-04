@@ -23,6 +23,8 @@ export class AdminComponent implements OnInit {
   id:number;
   groupid:number;
   groupName:string;
+  delusergroupName:string;
+  delusername:string;
 
 
   ngOnInit(): void {
@@ -86,7 +88,21 @@ export class AdminComponent implements OnInit {
 
   addUserToGroup() {
     this.groupservice.addUserToGroup(this.groupName, this.username).subscribe((data:any) => {
+      if (data.ok) {
+        alert("Success! User " + data.username + " has been successfully added!");
+      } else {
+        alert("Error! User is already in this group!");
+      }
+    });
+  }
 
+  delUserFromGroup() {
+    this.groupservice.deleteUserFromGroup(this.delusergroupName, this.delusername).subscribe((data: any) => {
+      if (data.ok) {
+        alert("Success! User " + data.username + " has been successfully deleted!");
+      } else {
+        alert("Error! User is not in this group!");
+      }
     });
   }
 }

@@ -16,14 +16,20 @@ module.exports = function (app) {
                 groups = JSON.parse(data)
 
                 let a = groups.find(group => ((group.name == req.body.name)));
-                a.users.push(user.id);
+                let index = a.users.indexOf(user.id);
+                if (index == -1) {
+                    res.send({ok: false})
+                } else {
+                    a.users.splice(index, 1);
 
-                groupsJSON = JSON.stringify(groups)
-                fs.writeFile('./data/gcd.json', groupsJSON, 'utf-8', function(err) {
-                    if (err) throw err;
+                    groupsJSON = JSON.stringify(groups)
+                    fs.writeFile('./data/gcd.json', groupsJSON, 'utf-8', function(err) {
+                        if (err) throw err;
                 
-                });
-                res.send(user)
+                    });
+                    user.ok = true
+                    res.send(user)
+                }
             });
         });
     });
