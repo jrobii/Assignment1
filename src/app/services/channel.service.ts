@@ -19,4 +19,8 @@ export class ChannelService {
   addUserToChannel(groupname:string, channelname:string, username:string) {
     return this.http.post('http://localhost:3000/api/addusertochannel', {group: groupname, channel: channelname, user: username});
   }
+
+  delUserFromChannel(groupname:string, channelname:string, username:string) {
+    return this.http.post('http://localhost:3000/api/deluserfromchannel', {group: groupname, channel: channelname, user: username});
+  }
 }

@@ -130,7 +130,7 @@ export class AdminComponent implements OnInit {
       } else {
         alert("Error! Channel is not in this group!");
       }
-    })
+    });
   }
 
   addUserToChannel() {
@@ -140,6 +140,16 @@ export class AdminComponent implements OnInit {
       } else {
         alert("Error! Channel is not in this group!");
       }
-    })
+    });
+  }
+
+  delUserFromChannel() {
+    this.channelservice.delUserFromChannel(this.groupName, this.channelName, this.username).subscribe((data: any) => {
+      if (data.ok) {
+        alert("Success! User has been successfully deleted to group!");
+      } else {
+        alert("Error! User is not in this group!");
+      }
+    });
   }
 }
