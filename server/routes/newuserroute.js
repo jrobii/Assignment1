@@ -1,13 +1,11 @@
 const bodyParser = require("body-parser");
 const cors = require('cors');
-var authroute = require('./authroute');
 const fs = require("fs");
 
 module.exports = function (app) {
     app.use(bodyParser.json());
     app.use(cors());
     app.post('/api/createuser', function(req, res){
-        console.log(req.body)
         let newUser = {
             "id": "",
             "username": req.body.username,
