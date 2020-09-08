@@ -32,10 +32,9 @@ export class ChanneladminComponent implements OnInit {
     } else {
       this.channelService.addNewChannel(this.addgroupName, this.addchannelName).subscribe((data: any) => {
         if (!data.ok) {
-          alert("Error, a channel with this name already exists!");
+          alert("Error! Is the channel and group name correct!");
         } else {
           alert("Successfully created channel: " + data.name)
-          this.router.navigateByUrl("/admin");
         }
       });
     }
@@ -46,7 +45,7 @@ export class ChanneladminComponent implements OnInit {
       if (data.ok) {
         alert("Success! Channel has been successfully deleted!");
       } else {
-        alert("Error! Channel is not in this group!");
+        alert("Error! Is the group and channel name correct!");
       }
     });
   }

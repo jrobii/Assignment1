@@ -54,8 +54,11 @@ export class AdminComponent implements OnInit {
 
   deleteUser(id:number) {
     this.userService.deleteUser(id).subscribe((data: any) => {
-      alert("User with id: " + data.id + ", and username: " + data.username + " has been deleted.")
-      this.router.navigateByUrl("/admin");
+      if (data.ok) {
+        alert("User with id: " + data.id + ", and username: " + data.username + " has been deleted.")
+      } else {
+        alert("Error! This user does not exist!");
+      }
     });
   }
 
@@ -70,7 +73,7 @@ export class AdminComponent implements OnInit {
       if (data.ok) {
         alert("Success! User " + data.username + " has been successfully added!");
       } else {
-        alert("Error! User is already in this group!");
+        alert("Error! Is the username and/or the group name correct!");
       }
     });
   }
@@ -80,7 +83,7 @@ export class AdminComponent implements OnInit {
       if (data.ok) {
         alert("Success! User " + data.username + " has been successfully deleted!");
       } else {
-        alert("Error! User is not in this group!");
+        alert("Error! Is the username and/or the group name correct!");
       }
     });
   }
@@ -90,7 +93,7 @@ export class AdminComponent implements OnInit {
       if (data.ok) {
         alert("Success! User has been successfully added to the Channel!");
       } else {
-        alert("Error! User is not in this Channel!");
+        alert("Error! Is the username, group name and channel name correct!");
       }
     });
   }
@@ -100,9 +103,17 @@ export class AdminComponent implements OnInit {
       if (data.ok) {
         alert("Success! User has been successfully deleted from the channel!");
       } else {
-        alert("Error! User is not in this channel!");
+        alert("Error! Is the username, group name and channel name correct!");
       }
     });
+  }
+
+  gotoGroup() {
+    this.router.navigateByUrl('/groupadmin');
+  }
+
+  gotoChannel() {
+    this.router.navigateByUrl('/channeladmin');
   }
 
     //Add group admin

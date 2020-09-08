@@ -118,6 +118,10 @@
     </form>
     <hr/>
     <br/>
+    <button (click)="gotoGroup()" class="btn btn-primary btn-block">Add or Remove a Group</button>
+    <button (click)="gotoChannel()" class="btn btn-primary btn-block">Add or Remove a Channel</button>
+    <hr/>
+    <br/>
     <div class="container" *ngIf="user.role == 's-admin'">
         <h3 class="text-center text-white pt-5">Current Users</h3>
         <div id="login-row" class="row justify-content-center align-items-center">

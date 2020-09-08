@@ -17,18 +17,21 @@ module.exports = function (app) {
             groups = JSON.parse(data)
 
             let a = groups.find(group => ((group.name == req.body.group)));
-            let exists = a.channels.find(channel => ((channel.name == req.body.name)));
-            if (exists) {
-                res.send({ok: false})
+            if (!a) {
+                res.send({ok: false});
             } else {
-                a.channels.push(newChannel);
-                groupsJSON = JSON.stringify(groups)
-                fs.writeFile('./data/gcd.json', groupsJSON, 'utf-8', function(err) {
-                    if (err) throw err;
-                
-                });
-                newChannel.ok = true
-                res.send(newChannel)
+                let exists = a.channels.find(channel => ((channel.name == req.body.name)));
+                if (exists) {
+                    res.send({ok: false})
+                } else {
+                    a.channels.push(newChannel);
+                    groupsJSON = JSON.stringify(groups)
+                    fs.writeFile('./data/gcd.json', groupsJSON, 'utf-8', function(err) {
+                        if (err) throw err;
+                    });
+                    newChannel.ok = true
+                    res.send(newChannel)
+                }
             }
         });
     });
