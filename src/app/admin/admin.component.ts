@@ -132,4 +132,14 @@ export class AdminComponent implements OnInit {
       }
     })
   }
+
+  addUserToChannel() {
+    this.channelservice.addUserToChannel(this.groupName, this.channelName, this.username).subscribe((data: any) => {
+      if (data.ok) {
+        alert("Success! User has been successfully added to group!");
+      } else {
+        alert("Error! Channel is not in this group!");
+      }
+    })
+  }
 }
