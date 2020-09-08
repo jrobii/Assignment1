@@ -23,6 +23,8 @@ require('./routes/addusertogrouproute.js')(app, path);
 require('./routes/deleteuserfromgrouproute.js')(app, path);
 
 //CHANNEL ROUTES
+require('./routes/newchannelroute.js')(app, path);
+require('./routes/deletechannelroute.js')(app, path);
 
 app.use(cors());
 
