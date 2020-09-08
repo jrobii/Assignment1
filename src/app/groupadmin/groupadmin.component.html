@@ -1,0 +1,34 @@
+<form>
+<h3 class="text-center text-info">Add Group.</h3>
+  <div class="form-row">
+    <div class="col">
+      <label for="groupname" class="text-info">Group Name:</label><br>
+      <input type="text" [(ngModel)]="addgroupName" name="groupName" class="form-control">
+    </div>
+    <button (click)="addNewGroup()" class="btn btn-info btn-md">Add</button>
+  </div>
+</form>
+<p></p>
+<form>
+<h3 class="text-center text-info">Remove Group.</h3>
+  <div class="form-row">
+    <div class="col">
+      <label for="groupname" class="text-info">Group Name:</label><br>
+      <input type="text" [(ngModel)]="delgroupName" name="groupName" class="form-control">
+    </div>
+    <button (click)="deleteGroup(delgroupName)" class="btn btn-info btn-md">Remove</button>
+  </div>
+</form>
+<p></p>
+<div id="login-box" class="col-sm">
+    <h3 class="text-center text-info">Current Groups.</h3>
+    <ul class="list-group" *ngFor="let group of groups">
+        <li class="list-group-item">ID: {{group.id}}</li>
+        <li class="list-group-item">Name: {{group.name}}</li>
+        <li class="list-group-item">Group Admins: {{group.admins}}</li>
+        <li class="list-group-item">Group Assis: {{group.assis}}</li>
+        <li class="list-group-item">Group Users: {{group.users}}</li>    
+        <li class="list-group-item" *ngFor="let channel of group.channels">Group Channels: {{channel.name}}, {{channel.users}}</li>
+        <p></p>
+    </ul>
+</div>

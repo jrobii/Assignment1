@@ -30,11 +30,10 @@ module.exports = function (app) {
                 
                 fs.writeFile('./data/gcd.json', groupsJSON, 'utf-8', function(err) {
                     if (err) throw err;
-                
                 });
                 newGroup.ok = true;
             }   
             res.send(newGroup);
         });
     });
-}
+}               

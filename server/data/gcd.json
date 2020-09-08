@@ -1,1 +1,1 @@
-[{"id":1,"name":"Test","admins":[],"assis":[],"users":[],"channels":[]},{"id":2,"name":"Uni","users":[],"admins":[],"assis":[],"channels":[]},{"id":3,"name":"Uni2","users":[],"admins":[],"assis":[],"channels":[]},{"id":4,"name":"Minecraft","users":[1],"admins":[],"assis":[],"channels":[{"name":"farming","users":[]}]}]
+[{"id":1,"name":"Test","admins":[],"assis":[],"users":[],"channels":[{"name":"testing","users":[]}]}]

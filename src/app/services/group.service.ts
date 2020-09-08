@@ -19,8 +19,8 @@ export class GroupService {
     return this.http.post('http://localhost:3000/api/getgroups', {});
   }
 
-  deleteGroup(id:number) {
-    return this.http.post('http://localhost:3000/api/deletegroup', {id: id});
+  deleteGroup(name:string) {
+    return this.http.post('http://localhost:3000/api/deletegroup', {name: name});
   }
 
   addUserToGroup(name:string, username:string) {

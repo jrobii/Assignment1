@@ -11,14 +11,18 @@ import { LoginService } from '../app/services/login.service';
 import { UserService } from  '../app/services/user.service';
 import { GroupService } from  '../app/services/group.service';
 import { AdminComponent } from './admin/admin.component';
-import { ChatComponent } from './chat/chat.component'
+import { ChatComponent } from './chat/chat.component';
+import { GroupadminComponent } from './groupadmin/groupadmin.component';
+import { ChanneladminComponent } from './channeladmin/channeladmin.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AdminComponent,
-    ChatComponent
+    ChatComponent,
+    GroupadminComponent,
+    ChanneladminComponent
   ],
   imports: [
     BrowserModule,

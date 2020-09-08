@@ -12,7 +12,7 @@ import { ChannelService } from '../services/channel.service';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private router: Router, private userservice: UserService, private groupservice: GroupService, private channelservice: ChannelService) { }
+  constructor(private router: Router, private userService: UserService, private groupService: GroupService, private channelService: ChannelService) { }
 
   user:User;
   username:string;
@@ -36,75 +36,37 @@ export class AdminComponent implements OnInit {
   }
 
   addNewUser() {
-    this.userservice.createNewUser(this.username, this.email, this.password, this.role).subscribe((data: any)=> {
+    this.userService.createNewUser(this.username, this.email, this.password, this.role).subscribe((data: any)=> {
       if (!data.ok) {
         alert("Error, a user with this username already exists!");
       } else {
         alert("Successfully created user: " + data.username)
         this.router.navigateByUrl("/admin");
       }
-      
     });
   }
 
-  addNewGroup() {
-    if (this.groupName == undefined) {
-      alert("Error! Name of group cannot be empty.")
-    } else {
-      this.groupservice.addNewGroup(this.groupName).subscribe((data: any)=> {
-        if (!data.ok) {
-          alert("Error, a group with this name already exists!");
-        } else {
-          alert("Successfully created group: " + data.name)
-          this.router.navigateByUrl("/admin");
-        }
-      });
-    } 
-  }
-
-  addNewChannel() {
-    if (this.channelName == undefined) {
-      alert("Error! The name of the channel cannot be empty.")
-    } else {
-      this.channelservice.addNewChannel(this.groupName, this.channelName).subscribe((data: any) => {
-        if (!data.ok) {
-          alert("Error, a channel with this name already exists!");
-        } else {
-          alert("Successfully created channel: " + data.name)
-          this.router.navigateByUrl("/admin");
-        }
-      });
-    }
-  }
-
   getGroups() {
-    this.groupservice.getGroups().subscribe((data: any) => {
+    this.groupService.getGroups().subscribe((data: any) => {
       this.groups = data;
     })
   }
 
-  deleteGroup(id:number) {
-    this.groupservice.deleteGroup(id).subscribe((data: any) => {
-      alert("Group with id: " + data.id + ", and name: " + data.name + " has been deleted.")
-      this.router.navigateByUrl("/admin");
-    });
-  }
-
   deleteUser(id:number) {
-    this.userservice.deleteUser(id).subscribe((data: any) => {
+    this.userService.deleteUser(id).subscribe((data: any) => {
       alert("User with id: " + data.id + ", and username: " + data.username + " has been deleted.")
       this.router.navigateByUrl("/admin");
     });
   }
 
   getUsers() {
-    this.userservice.getUsers().subscribe((data: any) => {
+    this.userService.getUsers().subscribe((data: any) => {
       this.users = data;
     })
   }
 
   addUserToGroup() {
-    this.groupservice.addUserToGroup(this.groupName, this.username).subscribe((data:any) => {
+    this.groupService.addUserToGroup(this.groupName, this.username).subscribe((data:any) => {
       if (data.ok) {
         alert("Success! User " + data.username + " has been successfully added!");
       } else {
@@ -114,7 +76,7 @@ export class AdminComponent implements OnInit {
   }
 
   delUserFromGroup() {
-    this.groupservice.deleteUserFromGroup(this.delusergroupName, this.delusername).subscribe((data: any) => {
+    this.groupService.deleteUserFromGroup(this.delusergroupName, this.delusername).subscribe((data: any) => {
       if (data.ok) {
         alert("Success! User " + data.username + " has been successfully deleted!");
       } else {
@@ -123,33 +85,28 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  deleteChannel() {
-    this.channelservice.deleteChannel(this.groupName, this.channelName).subscribe((data: any) => {
-      if (data.ok) {
-        alert("Success! Channel has been successfully deleted!");
-      } else {
-        alert("Error! Channel is not in this group!");
-      }
-    });
-  }
-
   addUserToChannel() {
-    this.channelservice.addUserToChannel(this.groupName, this.channelName, this.username).subscribe((data: any) => {
+    this.channelService.addUserToChannel(this.groupName, this.channelName, this.username).subscribe((data: any) => {
       if (data.ok) {
-        alert("Success! User has been successfully added to group!");
+        alert("Success! User has been successfully added to the Channel!");
       } else {
-        alert("Error! Channel is not in this group!");
+        alert("Error! User is not in this Channel!");
       }
     });
   }
 
   delUserFromChannel() {
-    this.channelservice.delUserFromChannel(this.groupName, this.channelName, this.username).subscribe((data: any) => {
+    this.channelService.delUserFromChannel(this.groupName, this.channelName, this.username).subscribe((data: any) => {
       if (data.ok) {
-        alert("Success! User has been successfully deleted to group!");
+        alert("Success! User has been successfully deleted from the channel!");
       } else {
-        alert("Error! User is not in this group!");
+        alert("Error! User is not in this channel!");
       }
     });
   }
+
+    //Add group admin
+    //Remove group admin
+    //add group assistant
+    //remove group assistant
 }

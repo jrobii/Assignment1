@@ -32,137 +32,119 @@
             </div>
         </div>
     </div>
-        <div class="container" *ngIf="user.role == 's-admin'">
-            <h3 class="text-center text-white pt-5">Current Users</h3>
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                    <h3 class="text-center text-info">Current Users.</h3>
-                        <ul class="list-group" *ngFor="let user of users">
-                                <li class="list-group-item">ID: {{user.id}}</li>
-                                <li class="list-group-item">Username: {{user.username}}</li>
-                                <li class="list-group-item">Email: {{user.email}}</li>
-                                <li class="list-group-item">Role: {{user.role}}</li>
-                                <p></p>
-                        </ul>
-                    </div>
-                    <h3 class="text-center text-info">Please enter the ID of a user to delete.</h3>
-                    <div class="form-group">
-                        <label for="username" class="text-info">User ID:</label><br>
-                        <input type="text" [(ngModel)]="id" name="id" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button (click)="deleteUser(id)" class="btn btn-info btn-md">Delete</button>
-                    </div>
-                    <h3 class="text-center text-info">Please enter a new name for a group.</h3>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Group Name:</label><br>
-                        <input type="text" [(ngModel)]="groupName" name="groupName" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button (click)="addNewGroup()" class="btn btn-info btn-md">Create</button>
-                    </div>
-                    <div id="login-box" class="col-md-12">
-                    <h3 class="text-center text-info">Current Groups.</h3>
-                        <ul class="list-group" *ngFor="let group of groups">
-                                <li class="list-group-item">ID: {{group.id}}</li>
-                                <li class="list-group-item">Name: {{group.name}}</li>
-                                <li class="list-group-item">Group Admins: {{group.admins}}</li>
-                                <li class="list-group-item">Group Assis: {{group.assis}}</li>
-                                <li class="list-group-item">Group Users: {{group.users}}</li>    
-                                <li class="list-group-item" *ngFor="let channel of group.channels">Group Channels: {{channel.name}}, {{channel.users}}</li>
-                                <p></p>
-                        </ul>
-                    </div>
-                    <h3 class="text-center text-info">Please enter the ID of a group to delete.</h3>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Group ID:</label><br>
-                        <input type="text" [(ngModel)]="groupid" name="groupid" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button (click)="deleteGroup(groupid)" class="btn btn-info btn-md">Delete</button>
-                    </div>
-                    <h3 class="text-center text-info">Add User to group.</h3>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Group Name:</label><br>
-                        <input type="text" [(ngModel)]="groupName" name="groupName" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Name of the user to be added:</label><br>
-                        <input type="text" [(ngModel)]="username" name="username" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button (click)="addUserToGroup(groupName, username)" class="btn btn-info btn-md">Add</button>
-                    </div>
-                    <h3 class="text-center text-info">Delete User from group.</h3>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Group Name:</label><br>
-                        <input type="text" [(ngModel)]="delusergroupName" name="delgroupName" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Name of the user to be deleted:</label><br>
-                        <input type="text" [(ngModel)]="delusername" name="delusername" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button (click)="delUserFromGroup(delgroupName, delusername)" class="btn btn-info btn-md">Add</button>
-                    </div>
-                    <h3 class="text-center text-info">Add channel to group.</h3>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Group Name:</label><br>
-                        <input type="text" [(ngModel)]="groupName" name="groupName" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Name of the channel to be added:</label><br>
-                        <input type="text" [(ngModel)]="channelName" name="channelname" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button (click)="addNewChannel(groupName, channelName)" class="btn btn-info btn-md">Add</button>
-                    </div>
-                    <h3 class="text-center text-info">Delete channel from group.</h3>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Group Name:</label><br>
-                        <input type="text" [(ngModel)]="groupName" name="groupName" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Name of the channel to be deleted:</label><br>
-                        <input type="text" [(ngModel)]="channelName" name="channelname" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button (click)="deleteChannel(groupName, channelName)" class="btn btn-info btn-md">Delete</button>
-                    </div>
-                    <h3 class="text-center text-info">Add User to Channel.</h3>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Group Name:</label><br>
-                        <input type="text" [(ngModel)]="groupName" name="groupName" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Name of the channel:</label><br>
-                        <input type="text" [(ngModel)]="channelName" name="channelname" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Name of the user:</label><br>
-                        <input type="text" [(ngModel)]="username" name="username" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button (click)="addUserToChannel(groupName, channelName, username)" class="btn btn-info btn-md">Add</button>
-                    </div>
-                    <h3 class="text-center text-info">Delete User to Channel.</h3>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Group Name:</label><br>
-                        <input type="text" [(ngModel)]="groupName" name="groupName" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Name of the channel:</label><br>
-                        <input type="text" [(ngModel)]="channelName" name="channelname" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="username" class="text-info">Name of the user:</label><br>
-                        <input type="text" [(ngModel)]="username" name="username" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button (click)="delUserFromChannel(groupName, channelName, username)" class="btn btn-info btn-md">Add</button>
-                    </div>
-                </div>
+    <hr/>
+    <br/>
+    <form>
+        <h3 class="text-center text-info">Remove User By ID.</h3>
+        <div class="form-row">
+            <div class="col">
+                <label for="username" class="text-info">User ID:</label><br>
+                <input type="text" [(ngModel)]="id" name="id" class="form-control">
             </div>
+            <button (click)="deleteUser(id)" class="btn btn-info btn-md">Remove</button>
         </div>
+    </form>
+    <hr/>
+    <br/>
+    <form>
+        <h3 class="text-center text-info">Add user to group.</h3>
+        <div class="form-row">
+            <div class="col">
+                <label for="username" class="text-info">Group Name:</label><br>
+                <input type="text" [(ngModel)]="groupName" name="groupName" class="form-control">
+            </div>
+            <div class="col">
+                <label for="username" class="text-info">User Name:</label><br>
+                <input type="text" [(ngModel)]="username" name="username" class="form-control">
+            </div>
+            <button (click)="addUserToGroup()" class="btn btn-info btn-md">Add</button>
+        </div>
+    </form>
+    <hr/>
+    <br/>
+    <form>
+        <h3 class="text-center text-info">Remove user from group.</h3>
+        <div class="form-row">
+            <div class="col">
+                <label for="username" class="text-info">Group Name:</label><br>
+                <input type="text" [(ngModel)]="delusergroupName" name="delusergroupName" class="form-control">
+            </div>
+            <div class="col">
+                <label for="username" class="text-info">User Name to be removed:</label><br>
+                <input type="text" [(ngModel)]="delusername" name="delusername" class="form-control">
+            </div>
+            <button (click)="delUserFromGroup()" class="btn btn-info btn-md">Remove</button>
+        </div>
+    </form>
+    <hr/>
+    <br/>
+    <form>
+        <h3 class="text-center text-info">Add user to channel.</h3>
+        <div class="form-row">
+            <div class="col">
+                <label for="username" class="text-info">Group Name:</label><br>
+                <input type="text" [(ngModel)]="groupName" name="groupName" class="form-control">
+            </div>
+            <div class="col">
+                <label for="username" class="text-info">Name of the channel:</label><br>
+                <input type="text" [(ngModel)]="channelName" name="channelName" class="form-control">
+            </div>
+            <div class="col">
+                <label for="username" class="text-info">Name of the user:</label><br>
+                <input type="text" [(ngModel)]="username" name="username" class="form-control">
+            </div>
+            <button (click)="addUserToChannel()" class="btn btn-info btn-md">Add</button>
+        </div>
+    </form>
+    <hr/>
+    <br/>
+    <form>
+        <h3 class="text-center text-info">Remove user from channel.</h3>
+        <div class="form-row">
+            <div class="col">
+                <label for="username" class="text-info">Group Name:</label><br>
+                <input type="text" [(ngModel)]="groupName" name="groupName" class="form-control">
+            </div>
+            <div class="col">
+                <label for="username" class="text-info">Name of the channel:</label><br>
+                <input type="text" [(ngModel)]="channelName" name="channelName" class="form-control">
+            </div>
+            <div class="col">
+                <label for="username" class="text-info">Name of the user:</label><br>
+                <input type="text" [(ngModel)]="username" name="username" class="form-control">
+            </div>
+            <button (click)="delUserFromChannel()" class="btn btn-info btn-md">Remove</button>
+        </div>
+    </form>
+    <hr/>
+    <br/>
+    <div class="container" *ngIf="user.role == 's-admin'">
+        <h3 class="text-center text-white pt-5">Current Users</h3>
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                <h3 class="text-center text-info">Current Users.</h3>
+                    <ul class="list-group" *ngFor="let user of users">
+                            <li class="list-group-item">ID: {{user.id}}</li>
+                            <li class="list-group-item">Username: {{user.username}}</li>
+                            <li class="list-group-item">Email: {{user.email}}</li>
+                            <li class="list-group-item">Role: {{user.role}}</li>
+                            <p></p>
+                    </ul>
+                </div>
+                <div id="login-box" class="col-md-12">
+                <h3 class="text-center text-info">Current Groups.</h3>
+                    <ul class="list-group" *ngFor="let group of groups">
+                            <li class="list-group-item">ID: {{group.id}}</li>
+                            <li class="list-group-item">Name: {{group.name}}</li>
+                            <li class="list-group-item">Group Admins: {{group.admins}}</li>
+                            <li class="list-group-item">Group Assis: {{group.assis}}</li>
+                            <li class="list-group-item">Group Users: {{group.users}}</li>    
+                            <li class="list-group-item" *ngFor="let channel of group.channels">Group Channels: {{channel.name}}, {{channel.users}}</li>
+                            <p></p>
+                    </ul>
+                </div>
+             </div>
+        </div>
+    </div>
 </body>
