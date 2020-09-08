@@ -21,6 +21,10 @@ require('./routes/deletegrouproute.js')(app, path);
 require('./routes/getgroupsroute.js')(app, path);
 require('./routes/addusertogrouproute.js')(app, path);
 require('./routes/deleteuserfromgrouproute.js')(app, path);
+require('./routes/addnewadminroute.js')(app, path);
+require('./routes/addnewassisroute.js')(app, path);
+require('./routes/deladminroute.js')(app, path);
+require('./routes/delassisroute.js')(app, path);
 
 //CHANNEL ROUTES
 require('./routes/newchannelroute.js')(app, path);

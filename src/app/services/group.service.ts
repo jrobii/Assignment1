@@ -30,4 +30,20 @@ export class GroupService {
   deleteUserFromGroup(name:string, username:string) {
     return this.http.post('http://localhost:3000/api/deleteuserfromgroup', {name: name, username: username});
   }
+
+  addNewAdmin(groupname:string, username:string) {
+    return this.http.post('http://localhost:3000/api/addgroupadmin', {name: groupname, username: username});
+  }
+
+  addNewAssis(groupname:string, username:string) {
+    return this.http.post('http://localhost:3000/api/addgroupassis', {name: groupname, username: username});
+  }
+
+  delAdmin(groupname:string, username:string) {
+    return this.http.post('http://localhost:3000/api/delgroupadmin', {name: groupname, username: username});
+  }
+
+  delAssis(groupname:string, username:string) {
+    return this.http.post('http://localhost:3000/api/delgroupassis', {name: groupname, username: username});
+  }
 }

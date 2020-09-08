@@ -10,10 +10,11 @@
       <input type="text" [(ngModel)]="addchannelName" name="channelname" class="form-control">
       
     </div>
-    <button (click)="addNewChannel()" class="btn btn-info btn-md">Add</button>
+    <button (click)="addNewChannel()" class="btn btn-info btn-md">Submit</button>
   </div>
 </form>
-<p></p>
+<hr/>
+<br/>
 <form>
 <h3 class="text-center text-info">Remove Channel from Group.</h3>
   <div class="form-row">
@@ -25,10 +26,11 @@
       <label for="channelname" class="text-info">Name of the channel to be removed:</label><br>
       <input type="text" [(ngModel)]="delchannelName" name="channelname" class="form-control">
     </div>
-    <button (click)="deleteChannel()" class="btn btn-info btn-md">Remove</button>
+    <button (click)="deleteChannel()" class="btn btn-info btn-md">Submit</button>
   </div>
 </form>
-<p></p>
+<hr/>
+<br/>
 <div id="login-box" class="col-sm">
     <h3 class="text-center text-info">Current Groups.</h3>
     <ul class="list-group" *ngFor="let group of groups">

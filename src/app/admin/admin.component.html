@@ -41,7 +41,7 @@
                 <label for="username" class="text-info">User ID:</label><br>
                 <input type="text" [(ngModel)]="id" name="id" class="form-control">
             </div>
-            <button (click)="deleteUser(id)" class="btn btn-info btn-md">Remove</button>
+            <button (click)="deleteUser(id)" class="btn btn-info btn-md">Submit</button>
         </div>
     </form>
     <hr/>
@@ -57,7 +57,7 @@
                 <label for="username" class="text-info">User Name:</label><br>
                 <input type="text" [(ngModel)]="username" name="username" class="form-control">
             </div>
-            <button (click)="addUserToGroup()" class="btn btn-info btn-md">Add</button>
+            <button (click)="addUserToGroup()" class="btn btn-info btn-md">Submit</button>
         </div>
     </form>
     <hr/>
@@ -73,7 +73,7 @@
                 <label for="username" class="text-info">User Name to be removed:</label><br>
                 <input type="text" [(ngModel)]="delusername" name="delusername" class="form-control">
             </div>
-            <button (click)="delUserFromGroup()" class="btn btn-info btn-md">Remove</button>
+            <button (click)="delUserFromGroup()" class="btn btn-info btn-md">Submit</button>
         </div>
     </form>
     <hr/>
@@ -93,7 +93,7 @@
                 <label for="username" class="text-info">Name of the user:</label><br>
                 <input type="text" [(ngModel)]="username" name="username" class="form-control">
             </div>
-            <button (click)="addUserToChannel()" class="btn btn-info btn-md">Add</button>
+            <button (click)="addUserToChannel()" class="btn btn-info btn-md">Submit</button>
         </div>
     </form>
     <hr/>
@@ -113,7 +113,7 @@
                 <label for="username" class="text-info">Name of the user:</label><br>
                 <input type="text" [(ngModel)]="username" name="username" class="form-control">
             </div>
-            <button (click)="delUserFromChannel()" class="btn btn-info btn-md">Remove</button>
+            <button (click)="delUserFromChannel()" class="btn btn-info btn-md">Submit</button>
         </div>
     </form>
     <hr/>

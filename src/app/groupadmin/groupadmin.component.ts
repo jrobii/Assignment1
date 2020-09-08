@@ -12,10 +12,12 @@ export class GroupadminComponent implements OnInit {
 
   constructor(private router: Router, private groupService: GroupService) { }
 
-  user:User
+  user:User;
   groups:[] = [];
-  addgroupName:string
-  delgroupName:string
+  addgroupName:string;
+  delgroupName:string;
+  admingroupName:string;
+  username:string;
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('current'));
@@ -50,5 +52,45 @@ export class GroupadminComponent implements OnInit {
         }
       });
     } 
+  }
+
+  addNewAdmin() {
+    this.groupService.addNewAdmin(this.admingroupName, this.username).subscribe((data: any) =>{
+      if (data.ok) {
+        alert("The user: " + data.username + " has been added as a group admin.")
+      } else {
+        alert("Error! Check the group name and username are correct!")
+      }
+    });
+  }
+
+  addNewAssis() {
+    this.groupService.addNewAssis(this.admingroupName, this.username).subscribe((data: any) =>{
+      if (data.ok) {
+        alert("The user: " + data.username + " has been added as a group assis.")
+      } else {
+        alert("Error! Check the group name and username are correct")
+      }
+    });
+  }
+
+  delAdmin() {
+    this.groupService.delAdmin(this.admingroupName, this.username).subscribe((data: any) =>{
+      if (data.ok) {
+        alert("The user: " + data.username + " has been removed as a group admin.")
+      } else {
+        alert("Error! Check the group name and username are correct!")
+      }
+    });
+  }
+
+  delAssis() {
+    this.groupService.delAssis(this.admingroupName, this.username).subscribe((data: any) =>{
+      if (data.ok) {
+        alert("The user: " + data.username + " has been removed as a group assis.")
+      } else {
+        alert("Error! Check the group name and username are correct!")
+      }
+    });
   }
 }

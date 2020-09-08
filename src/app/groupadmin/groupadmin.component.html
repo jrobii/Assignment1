@@ -5,10 +5,11 @@
       <label for="groupname" class="text-info">Group Name:</label><br>
       <input type="text" [(ngModel)]="addgroupName" name="groupName" class="form-control">
     </div>
-    <button (click)="addNewGroup()" class="btn btn-info btn-md">Add</button>
+    <button (click)="addNewGroup()" class="btn btn-info btn-md">Submit</button>
   </div>
 </form>
-<p></p>
+<hr/>
+<br/>
 <form>
 <h3 class="text-center text-info">Remove Group.</h3>
   <div class="form-row">
@@ -16,10 +17,75 @@
       <label for="groupname" class="text-info">Group Name:</label><br>
       <input type="text" [(ngModel)]="delgroupName" name="groupName" class="form-control">
     </div>
-    <button (click)="deleteGroup(delgroupName)" class="btn btn-info btn-md">Remove</button>
+    <button (click)="deleteGroup(delgroupName)" class="btn btn-info btn-md">Submit</button>
   </div>
 </form>
-<p></p>
+<hr/>
+<br/>
+<form>
+<h3 class="text-center text-info">Add New Admin to Group.</h3>
+  <div class="form-row">
+    <div class="col">
+      <label for="groupname" class="text-info">Group Name:</label><br>
+      <input type="text" [(ngModel)]="admingroupName" name="groupName" class="form-control">
+    </div>
+    <div class="col">
+      <label for="groupname" class="text-info">User Name:</label><br>
+      <input type="text" [(ngModel)]="username" name="username" class="form-control">
+    </div>
+    <button (click)="addNewAdmin()" class="btn btn-info btn-md">Submit</button>
+  </div>
+</form>
+<hr/>
+<br/>
+<form>
+<h3 class="text-center text-info">Remove Admin from Group.</h3>
+  <div class="form-row">
+    <div class="col">
+      <label for="groupname" class="text-info">Group Name:</label><br>
+      <input type="text" [(ngModel)]="admingroupName" name="groupName" class="form-control">
+    </div>
+    <div class="col">
+      <label for="groupname" class="text-info">User Name:</label><br>
+      <input type="text" [(ngModel)]="username" name="username" class="form-control">
+    </div>
+    <button (click)="delAdmin()" class="btn btn-info btn-md">Submit</button>
+  </div>
+</form>
+<hr/>
+<br/>
+<form>
+<h3 class="text-center text-info">Add New Assis to Group.</h3>
+  <div class="form-row">
+    <div class="col">
+      <label for="groupname" class="text-info">Group Name:</label><br>
+      <input type="text" [(ngModel)]="admingroupName" name="groupName" class="form-control">
+    </div>
+    <div class="col">
+      <label for="groupname" class="text-info">User Name:</label><br>
+      <input type="text" [(ngModel)]="username" name="username" class="form-control">
+    </div>
+    <button (click)="addNewAssis()" class="btn btn-info btn-md">Submit</button>
+  </div>
+</form>
+<hr/>
+<br/>
+<form>
+<h3 class="text-center text-info">Remove Assis from Group.</h3>
+  <div class="form-row">
+    <div class="col">
+      <label for="groupname" class="text-info">Group Name:</label><br>
+      <input type="text" [(ngModel)]="admingroupName" name="groupName" class="form-control">
+    </div>
+    <div class="col">
+      <label for="groupname" class="text-info">User Name:</label><br>
+      <input type="text" [(ngModel)]="username" name="username" class="form-control">
+    </div>
+    <button (click)="delAssis()" class="btn btn-info btn-md">Submit</button>
+  </div>
+</form>
+<hr/>
+<br/>
 <div id="login-box" class="col-sm">
     <h3 class="text-center text-info">Current Groups.</h3>
     <ul class="list-group" *ngFor="let group of groups">
