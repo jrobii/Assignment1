@@ -25,6 +25,7 @@ module.exports = function (app) {
                 console.log("Error: There is already a Group with this name.")
             } else {
                 newGroup.id = groups[groups.length -1].id + 1;
+                newGroup.admins.push(req.body.user.id)
                 groups.push(newGroup)
                 groupsJSON = JSON.stringify(groups);
                 

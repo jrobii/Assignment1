@@ -31,11 +31,13 @@ export class GroupadminComponent implements OnInit {
   }
 
   deleteGroup(delgroupName:string) {
-    this.groupService.deleteGroup(this.delgroupName).subscribe((data: any) => {
+    this.groupService.deleteGroup(this.user, this.delgroupName).subscribe((data: any) => {
       if (data.ok) {
         alert("Group with id: " + data.id + ", and name: " + data.name + " has been deleted.")
-      } else {
+      } else if (!data.ok) {
         alert("Error! This group does not exist!")
+      } else if (!data.valid) {
+        alert("Error! You do not have permissions to delete this group!")
       }
     });
   }
@@ -44,7 +46,7 @@ export class GroupadminComponent implements OnInit {
     if (this.addgroupName == undefined) {
       alert("Error! Name of group cannot be empty.")
     } else {
-      this.groupService.addNewGroup(this.addgroupName).subscribe((data: any)=> {
+      this.groupService.addNewGroup(this.user, this.addgroupName).subscribe((data: any)=> {
         if (!data.ok) {
           alert("Error, a group with this name already exists!");
         } else {
@@ -65,11 +67,13 @@ export class GroupadminComponent implements OnInit {
   }
 
   addNewAssis() {
-    this.groupService.addNewAssis(this.admingroupName, this.username).subscribe((data: any) =>{
+    this.groupService.addNewAssis(this.user, this.admingroupName, this.username).subscribe((data: any) =>{
       if (data.ok) {
         alert("The user: " + data.username + " has been added as a group assis.")
-      } else {
+      } else if (!data.ok) {
         alert("Error! Check the group name and username are correct")
+      } else if (!data.valid) {
+        alert("You do not have permission for this!")
       }
     });
   }
@@ -85,11 +89,13 @@ export class GroupadminComponent implements OnInit {
   }
 
   delAssis() {
-    this.groupService.delAssis(this.admingroupName, this.username).subscribe((data: any) =>{
+    this.groupService.delAssis(this.user, this.admingroupName, this.username).subscribe((data: any) =>{
       if (data.ok) {
         alert("The user: " + data.username + " has been removed as a group assis.")
-      } else {
+      } else if (!data.ok){
         alert("Error! Check the group name and username are correct!")
+      } else if (!data.valid) {
+        alert("You do not have permission for this!")
       }
     });
   }

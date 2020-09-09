@@ -21,18 +21,23 @@ module.exports = function (app) {
                     if (!a) {
                         res.send({ok: false});
                     } else {
-                        let index = a.assis.indexOf(user.id);
-                        if (index == -1) {
-                            res.send({ok: false})
-                        } else {
-                            a.assis.splice(index, 1);
+                        if (a.admins.includes(req.body.user.id) || req.body.user.role == "s-admin") {
+                            let index = a.assis.indexOf(user.id);
+                            if (index == -1) {
+                                res.send({ok: false});
+                            } else {
+                                a.assis.splice(index, 1);
 
-                            groupsJSON = JSON.stringify(groups)
-                            fs.writeFile('./data/gcd.json', groupsJSON, 'utf-8', function(err) {
-                                if (err) throw err;
-                            });
-                            user.ok = true
-                            res.send(user)
+                                groupsJSON = JSON.stringify(groups)
+                                fs.writeFile('./data/gcd.json', groupsJSON, 'utf-8', function(err) {
+                                    if (err) throw err;
+                                });
+                                user.ok = true;
+                                user.valid = true;
+                                res.send(user);
+                            }
+                        } else {
+                            res.send({valid: false});
                         }
                     }
                 });

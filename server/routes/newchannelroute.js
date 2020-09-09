@@ -20,17 +20,22 @@ module.exports = function (app) {
             if (!a) {
                 res.send({ok: false});
             } else {
-                let exists = a.channels.find(channel => ((channel.name == req.body.name)));
-                if (exists) {
-                    res.send({ok: false})
+                if (a.admins.includes(req.body.user.id) || a.assis.includes(req.body.user.id) || req.body.user.role == "s-admin") {
+                    let exists = a.channels.find(channel => ((channel.name == req.body.name)));
+                    if (exists) {
+                        res.send({ok: false})
+                    } else {
+                        a.channels.push(newChannel);
+                        groupsJSON = JSON.stringify(groups)
+                        fs.writeFile('./data/gcd.json', groupsJSON, 'utf-8', function(err) {
+                            if (err) throw err;
+                        });
+                        newChannel.ok = true
+                        newChannel.valid = true;
+                        res.send(newChannel)
+                    }
                 } else {
-                    a.channels.push(newChannel);
-                    groupsJSON = JSON.stringify(groups)
-                    fs.writeFile('./data/gcd.json', groupsJSON, 'utf-8', function(err) {
-                        if (err) throw err;
-                    });
-                    newChannel.ok = true
-                    res.send(newChannel)
+                    res.send({valid: false});
                 }
             }
         });

@@ -22,18 +22,23 @@ module.exports = function (app) {
                     if (!a) {
                         res.send({ok: false})
                     } else {
-                        let exists = a.assis.includes(user.id);
+                        if (a.admins.includes(req.body.user.id) || req.body.user.role == "s-admin") {
+                            let exists = a.assis.includes(user.id);
                 
-                        if (exists) {
-                            res.send({ok: false});
+                            if (exists) {
+                                res.send({ok: false});
+                            } else {
+                                a.assis.push(user.id);
+                                groupsJSON = JSON.stringify(groups)
+                                fs.writeFile('./data/gcd.json', groupsJSON, 'utf-8', function(err) {
+                                    if (err) throw err;
+                                });
+                                user.ok = true;
+                                user.valid = true;
+                                res.send(user)
+                            }
                         } else {
-                            a.assis.push(user.id);
-                            groupsJSON = JSON.stringify(groups)
-                            fs.writeFile('./data/gcd.json', groupsJSON, 'utf-8', function(err) {
-                                if (err) throw err;
-                            });
-                            user.ok = true
-                            res.send(user)
+                            res.send({valid: false});
                         }
                     }
                 });

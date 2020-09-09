@@ -12,16 +12,16 @@ export class GroupService {
 
   constructor(private http: HttpClient) { }
 
-  addNewGroup(name:string) {
-    return this.http.post('http://localhost:3000/api/creategroup', {name: name});
+  addNewGroup(user: User, name:string) {
+    return this.http.post('http://localhost:3000/api/creategroup', {user: user, name: name});
   }
 
   getGroups() {
     return this.http.post('http://localhost:3000/api/getgroups', {});
   }
 
-  deleteGroup(name:string) {
-    return this.http.post('http://localhost:3000/api/deletegroup', {name: name});
+  deleteGroup(user:User, name:string) {
+    return this.http.post('http://localhost:3000/api/deletegroup', {user: user, name: name});
   }
 
   addUserToGroup(user:User, name:string, username:string) {
@@ -36,16 +36,16 @@ export class GroupService {
     return this.http.post('http://localhost:3000/api/addgroupadmin', {name: groupname, username: username});
   }
 
-  addNewAssis(groupname:string, username:string) {
-    return this.http.post('http://localhost:3000/api/addgroupassis', {name: groupname, username: username});
+  addNewAssis(user:User, groupname:string, username:string) {
+    return this.http.post('http://localhost:3000/api/addgroupassis', {user: user, name: groupname, username: username});
   }
 
   delAdmin(groupname:string, username:string) {
     return this.http.post('http://localhost:3000/api/delgroupadmin', {name: groupname, username: username});
   }
 
-  delAssis(groupname:string, username:string) {
-    return this.http.post('http://localhost:3000/api/delgroupassis', {name: groupname, username: username});
+  delAssis(user: User, groupname:string, username:string) {
+    return this.http.post('http://localhost:3000/api/delgroupassis', {user: user, name: groupname, username: username});
   }
 
   getUsersGroups(id:number) {

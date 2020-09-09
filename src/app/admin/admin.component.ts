@@ -93,21 +93,25 @@ export class AdminComponent implements OnInit {
   }
 
   addUserToChannel() {
-    this.channelService.addUserToChannel(this.groupName, this.channelName, this.username).subscribe((data: any) => {
+    this.channelService.addUserToChannel(this.user, this.groupName, this.channelName, this.username).subscribe((data: any) => {
       if (data.ok) {
-        alert("Success! User has been successfully added to the Channel!");
-      } else {
-        alert("Error! Is the username, group name and channel name correct!");
+        alert("Success! User " + data.username + " has been successfully added!");
+      } else if (!data.ok) {
+        alert("Error! Is the username and/or the group name correct!");
+      } else if (!data.valid) {
+        alert("Error, you do not have permission to remove a user from this group.")
       }
     });
   }
 
   delUserFromChannel() {
-    this.channelService.delUserFromChannel(this.groupName, this.channelName, this.username).subscribe((data: any) => {
+    this.channelService.delUserFromChannel(this.user, this.groupName, this.channelName, this.username).subscribe((data: any) => {
       if (data.ok) {
-        alert("Success! User has been successfully deleted from the channel!");
-      } else {
-        alert("Error! Is the username, group name and channel name correct!");
+        alert("Success! User " + data.username + " has been successfully deleted!");
+      } else if (!data.ok) {
+        alert("Error! Is the username and/or the group name correct!");
+      } else if (!data.valid) {
+        alert("Error, you do not have permission to remove a user from this group.")
       }
     });
   }

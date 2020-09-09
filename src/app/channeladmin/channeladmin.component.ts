@@ -30,7 +30,7 @@ export class ChanneladminComponent implements OnInit {
     if (this.addchannelName == undefined) {
       alert("Error! The name of the channel cannot be empty.")
     } else {
-      this.channelService.addNewChannel(this.addgroupName, this.addchannelName).subscribe((data: any) => {
+      this.channelService.addNewChannel(this.user, this.addgroupName, this.addchannelName).subscribe((data: any) => {
         if (!data.ok) {
           alert("Error! Is the channel and group name correct!");
         } else {
@@ -41,7 +41,7 @@ export class ChanneladminComponent implements OnInit {
   }
 
   deleteChannel() {
-    this.channelService.deleteChannel(this.delgroupName, this.delchannelName).subscribe((data: any) => {
+    this.channelService.deleteChannel(this.user, this.delgroupName, this.delchannelName).subscribe((data: any) => {
       if (data.ok) {
         alert("Success! Channel has been successfully deleted!");
       } else {
