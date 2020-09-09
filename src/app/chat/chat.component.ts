@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/User';
+import {GroupService } from '../services/group.service'
 
 @Component({
   selector: 'app-chat',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatComponent implements OnInit {
 
-  constructor() { }
+  constructor(private groupService: GroupService) { }
+
+  user:User;
+  groups:[] = [];
+  channels:[] = [];
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('current'));
+    this.getUsersGroups();
+  }
+
+  getUsersGroups() {
+    this.groupService.getUsersGroups(this.user.id).subscribe((data: any) => {
+      this.groups = data;
+    });
   }
 
 }

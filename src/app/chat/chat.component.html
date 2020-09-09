@@ -1,1 +1,8 @@
-<p>chat works!</p>
+<ng-container *ngFor="let group of groups">
+    {{group.name}}
+    <div *ngFor="let channel of group.channels">
+        <ul *ngIf="channel.users.includes(user.id)">
+            <li>{{ channel.name}}</li>
+        </ul>
+    </div>
+</ng-container>

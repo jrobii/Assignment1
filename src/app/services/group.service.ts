@@ -46,4 +46,8 @@ export class GroupService {
   delAssis(groupname:string, username:string) {
     return this.http.post('http://localhost:3000/api/delgroupassis', {name: groupname, username: username});
   }
+
+  getUsersGroups(id:number) {
+    return this.http.post('http://localhost:3000/api/getusersgroups', {id: id});
+  }
 }
