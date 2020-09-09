@@ -1,6 +1,6 @@
 # GitHub Repository
 A Github repository was used to ensure that code could be versioned and stored somewhere else rather than locally.
-The repository was kept clean and was regularly committed to when new code was implemented that was working. The repository holds code for the angular and server (node) services.
+The repository was kept clean and was regularly committed to when new code was implemented that was working. The repository holds code for the angular and server (node) applications.
 
 # Data Structure
 ### Back-End
@@ -20,8 +20,8 @@ Data on the back end is stored in serialised JSON files. One called users.json t
 - assis - an array of user id's that are assistants of the group.
 - users - an array of user id's that have access to the group.
 - channels - an array of channel objects that belong to this group.
-> name - name of the channel.
-> users - array of users that can access the channel.
+1. name - name of the channel (within the channels array).
+2. users - array of users that can access the channel (within the channels array).
 
 ### Front-End
 Data is fetched from the back-end through HTTP Post Requests. Data is also sent to the back-end through objects containing the relevant data.
