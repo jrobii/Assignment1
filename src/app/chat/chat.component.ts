@@ -13,7 +13,6 @@ export class ChatComponent implements OnInit {
 
   user:User;
   groups:[] = [];
-  channels:[] = [];
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('current'));

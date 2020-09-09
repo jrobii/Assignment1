@@ -69,21 +69,25 @@ export class AdminComponent implements OnInit {
   }
 
   addUserToGroup() {
-    this.groupService.addUserToGroup(this.groupName, this.username).subscribe((data:any) => {
+    this.groupService.addUserToGroup(this.user, this.groupName, this.username).subscribe((data:any) => {
       if (data.ok) {
         alert("Success! User " + data.username + " has been successfully added!");
-      } else {
+      } else if (!data.ok) {
         alert("Error! Is the username and/or the group name correct!");
-      }
+      } else if (!data.valid) {
+        alert("Error, you do not have permission to add a user to this group.")
+      } 
     });
   }
 
   delUserFromGroup() {
-    this.groupService.deleteUserFromGroup(this.delusergroupName, this.delusername).subscribe((data: any) => {
+    this.groupService.deleteUserFromGroup(this.user, this.delusergroupName, this.delusername).subscribe((data: any) => {
       if (data.ok) {
         alert("Success! User " + data.username + " has been successfully deleted!");
-      } else {
+      } else if (!data.ok) {
         alert("Error! Is the username and/or the group name correct!");
+      } else if (!data.valid) {
+        alert("Error, you do not have permission to remove a user from this group.")
       }
     });
   }
