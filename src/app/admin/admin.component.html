@@ -34,7 +34,7 @@
     </div>
     <hr/>
     <br/>
-    <form>
+    <form *ngIf="user.role == 's-admin'">
         <h3 class="text-center text-info">Remove User By ID.</h3>
         <div class="form-row">
             <div class="col">
@@ -46,7 +46,7 @@
     </form>
     <hr/>
     <br/>
-    <form>
+    <form *ngIf="user.role == 's-admin' || user.role == 'g-admin'">
         <h3 class="text-center text-info">Add user to group.</h3>
         <div class="form-row">
             <div class="col">
@@ -62,7 +62,7 @@
     </form>
     <hr/>
     <br/>
-    <form>
+    <form *ngIf="user.role == 's-admin' || user.role == 'g-admin'">
         <h3 class="text-center text-info">Remove user from group.</h3>
         <div class="form-row">
             <div class="col">
@@ -78,7 +78,7 @@
     </form>
     <hr/>
     <br/>
-    <form>
+    <form *ngIf="user.role == 's-admin' || user.role == 'g-admin' || user.role == 'g-assis'">
         <h3 class="text-center text-info">Add user to channel.</h3>
         <div class="form-row">
             <div class="col">
@@ -98,7 +98,7 @@
     </form>
     <hr/>
     <br/>
-    <form>
+    <form *ngIf="user.role == 's-admin' || user.role == 'g-admin' || user.role == 'assis'">
         <h3 class="text-center text-info">Remove user from channel.</h3>
         <div class="form-row">
             <div class="col">
@@ -122,7 +122,7 @@
     <button (click)="gotoChannel()" class="btn btn-primary btn-block">Add or Remove a Channel</button>
     <hr/>
     <br/>
-    <div class="container" *ngIf="user.role == 's-admin'">
+    <div class="container" *ngIf="user.role == 's-admin' || user.role == 'g-admin' || user.role == 'assis'">
         <h3 class="text-center text-white pt-5">Current Users</h3>
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">

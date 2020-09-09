@@ -1,4 +1,4 @@
-<form>
+<form *ngIf="user.role == 's-admin' || user.role == 'g-admin'">
 <h3 class="text-center text-info">Add Group.</h3>
   <div class="form-row">
     <div class="col">
@@ -10,7 +10,7 @@
 </form>
 <hr/>
 <br/>
-<form>
+<form *ngIf="user.role == 's-admin' || user.role == 'g-admin'">
 <h3 class="text-center text-info">Remove Group.</h3>
   <div class="form-row">
     <div class="col">
@@ -22,7 +22,7 @@
 </form>
 <hr/>
 <br/>
-<form>
+<form *ngIf="user.role == 's-admin'">
 <h3 class="text-center text-info">Add New Admin to Group.</h3>
   <div class="form-row">
     <div class="col">
@@ -38,7 +38,7 @@
 </form>
 <hr/>
 <br/>
-<form>
+<form *ngIf="user.role == 's-admin'">
 <h3 class="text-center text-info">Remove Admin from Group.</h3>
   <div class="form-row">
     <div class="col">
@@ -54,7 +54,7 @@
 </form>
 <hr/>
 <br/>
-<form>
+<form *ngIf="user.role == 's-admin' || user.role == 'g-admin'">
 <h3 class="text-center text-info">Add New Assis to Group.</h3>
   <div class="form-row">
     <div class="col">
@@ -70,8 +70,8 @@
 </form>
 <hr/>
 <br/>
-<form>
-<h3 class="text-center text-info">Remove Assis from Group.</h3>
+<form *ngIf="user.role == 's-admin' || user.role == 'g-admin'">
+<h3 class="text-center text-info" >Remove Assis from Group.</h3>
   <div class="form-row">
     <div class="col">
       <label for="groupname" class="text-info">Group Name:</label><br>
@@ -86,7 +86,7 @@
 </form>
 <hr/>
 <br/>
-<div id="login-box" class="col-sm">
+<div id="login-box" class="col-sm" *ngIf="user.role == 's-admin' || user.role == 'g-admin'">
     <h3 class="text-center text-info">Current Groups.</h3>
     <ul class="list-group" *ngFor="let group of groups">
         <li class="list-group-item">ID: {{group.id}}</li>

@@ -1,4 +1,4 @@
-<form>
+<form *ngIf="user.role == 's-admin' || user.role == 'g-admin' || user.role == 'assis'">
 <h3 class="text-center text-info">Add Channel to Group.</h3>
   <div class="form-row">
     <div class="col">
@@ -15,7 +15,7 @@
 </form>
 <hr/>
 <br/>
-<form>
+<form *ngIf="user.role == 's-admin' || user.role == 'g-admin' || user.role == 'assis'">
 <h3 class="text-center text-info">Remove Channel from Group.</h3>
   <div class="form-row">
     <div class="col">
@@ -31,7 +31,7 @@
 </form>
 <hr/>
 <br/>
-<div id="login-box" class="col-sm">
+<div id="login-box" class="col-sm" *ngIf="user.role == 's-admin' || user.role == 'g-admin' || user.role == 'assis'">
     <h3 class="text-center text-info">Current Groups.</h3>
     <ul class="list-group" *ngFor="let group of groups">
         <li class="list-group-item">ID: {{group.id}}</li>
