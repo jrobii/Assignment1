@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/User';
-import {GroupService } from '../services/group.service'
+import {GroupService } from '../services/group.service';
+import { Router } from '@angular/router/';
 
 @Component({
   selector: 'app-chat',
@@ -9,7 +10,7 @@ import {GroupService } from '../services/group.service'
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private groupService: GroupService) { }
+  constructor(private groupService: GroupService, private router: Router) { }
 
   user:User;
   groups:[] = [];
@@ -17,6 +18,9 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('current'));
     this.getUsersGroups();
+    if (!this.user) {
+      this.router.navigateByUrl('/')
+    }
   }
 
   getUsersGroups() {

@@ -24,7 +24,14 @@ export class ChanneladminComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('current'));
     this.getGroups();
+    if (!this.user) {
+      this.router.navigateByUrl('/')
+    }
+    if (this.user.role != 's-admin' && this.user.role != 'g-admin' && this.user.role != 'assis') {
+      this.router.navigateByUrl('/chat')
+    }
   }
+
 
   addNewChannel() {
     if (this.addchannelName == undefined) {
