@@ -15,8 +15,6 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname + '/../dist/assignment')));
-
 MongoClient.connect(mongoUrl, {poolSize:10, useNewUrlParser: true, useUnifiedTopology: true}, function(err, client) {
     if (err) {return console.log(err)}
     const db = client.db('ass2')

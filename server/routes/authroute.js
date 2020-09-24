@@ -1,26 +1,16 @@
-const bodyParser = require("body-parser");
-const cors = require('cors');
-var fs = require('fs');
-
-module.exports = function (app) {
-    app.use(bodyParser.json());
-    app.use(cors());
+module.exports = function (app, db) {
     app.post('/api/auth', function(req, res){
         username = req.body.username
         password = req.body.password
 
-        fs.readFile('./data/users.json', 'utf8', function(err, data) {
+        const collection = db.collection('users');
+        collection.find({username: username, password:password}).toArray((err, data) => {
             if (err) throw err;
-            accounts = JSON.parse(data)
-
-            let a = accounts.find(use => ((use.username == username) && (use.password == password)));
-            if (a) {
-                a.ok = true
-                a.password = "";
-                res.send(a);
+            if (data.length) {
+                res.send({ok: false})
             } else {
-                res.send({"ok": false});
+                res.send(data)
             }
-        });
+        })
     });
 }
